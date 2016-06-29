@@ -23,6 +23,7 @@ class DBHelper
 
 	private function create_databases($db)
 	{
+		$db -> execute (GroupTypeTable::CREATE_QUERY);
 		$db -> execute (PingRecordTable::CREATE_QUERY);
 		$db -> execute (UserTable::CREATE_QUERY);
 		$db -> execute (PingTypeTable::CREATE_QUERY);
@@ -33,6 +34,7 @@ class DBHelper
 
 	private function delete_databases($db)
 	{
+		$db -> execute (GroupTypeTable::DELETE_QUERY);
 		$db -> execute (PingRecordTable::DELETE_QUERY);
 		$db -> execute (UserTable::DELETE_QUERY);
 		$db -> execute (PingTypeTable::DELETE_QUERY);
@@ -43,6 +45,7 @@ class DBHelper
 
 	private function populate_databases($db)
 	{
+		GroupTypeTable::Populate ($db);
 		PingRecordTable::Populate ($db);
 		PingTypeTable::Populate ($db);
 		UserTable::Populate ($db);
@@ -76,26 +79,59 @@ class PingRecordTable extends BaseTable
 
 	public static function Populate ($db)
 	{
-	}	
+	}
 }
 
 class UserTable extends BaseTable
 {
 	const TABLE_NAME = "user_table";
-	const UID = "uni_id";
 	const EMAIL = "email";
-	const GROUP = "group";
+	const GROUP = "test_group";
 
 	const DELETE_QUERY = "DROP TABLE IF EXISTS " . self::TABLE_NAME;
 	const CREATE_QUERY = "CREATE TABLE " . self::TABLE_NAME . "(" .
 					self::_ID . " INT NOT NULL AUTO_INCREMENT, " .
-					self::UID . " VARCHAR (10), " .
 					self::EMAIL . " VARCHAR (50), " .
 					self::GROUP . " INT, " .
 					"PRIMARY KEY (" . self::_ID . "));";
 
 	public static function Populate ($db)
 	{
+		require ("create_db_preload_data.php");
+
+		echo ("Inserting hunter-attachment..\n");
+		$length = count($hunter_att);
+		for($x = 0; $x < $length; $x++) 
+		{
+		    self::_insert ($db, $hunter_att [$i], 1);
+		}
+
+		echo ("Inserting hunter-url..\n");
+		$length = count($hunter_url);
+		for($x = 0; $x < $length; $x++) 
+		{
+		    _insert ($db, $hunter_url [$i], 1);
+		}
+
+		echo ("Inserting passive-attachment..\n");
+		$length = count($passive_att);
+		for($x = 0; $x < $length; $x++) 
+		{
+		    _insert ($db, $passive_att [$i], 1);
+		}
+
+		echo ("Inserting passive-url..\n");
+		$length = count($passive_url);
+		for($x = 0; $x < $length; $x++) 
+		{
+		    _insert ($db, $passive_url [$i], 1);
+		}
+	}
+
+	private static function _insert ($db, $email, $group)
+	{
+		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::EMAIL . ", " . self::GROUP . 
+				") VALUES ('" . $email . "', " . $group . ");");
 	}
 }
 

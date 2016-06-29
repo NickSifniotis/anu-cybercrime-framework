@@ -79,26 +79,67 @@ class PingRecordTable extends BaseTable
 
 	public static function Populate ($db)
 	{
-	}	
+	}
 }
 
 class UserTable extends BaseTable
 {
 	const TABLE_NAME = "user_table";
-	const UID = "uni_id";
 	const EMAIL = "email";
-	const GROUP = "group";
+	const GROUP = "test_group";
 
 	const DELETE_QUERY = "DROP TABLE IF EXISTS " . self::TABLE_NAME;
 	const CREATE_QUERY = "CREATE TABLE " . self::TABLE_NAME . "(" .
 					self::_ID . " INT NOT NULL AUTO_INCREMENT, " .
-					self::UID . " VARCHAR (10), " .
 					self::EMAIL . " VARCHAR (50), " .
 					self::GROUP . " INT, " .
 					"PRIMARY KEY (" . self::_ID . "));";
 
 	public static function Populate ($db)
 	{
+		require ("create_db_preload_data.php");
+
+		echo ("Inserting hunter-attachment..\n");
+		flush();
+
+		$length = count($hunter_att);
+		for($x = 0; $x < $length; $x++) 
+		{
+		    self::_insert ($db, $hunter_att [$x], 1);
+		}
+
+		echo ("Inserting hunter-url..\n");
+		flush();
+
+		$length = count($hunter_url);
+		for($x = 0; $x < $length; $x++) 
+		{
+		    self::_insert ($db, $hunter_url [$x], 2);
+		}
+
+		echo ("Inserting passive-attachment..\n");
+		flush();
+
+		$length = count($passive_att);
+		for($x = 0; $x < $length; $x++) 
+		{
+		    self::_insert ($db, $passive_att [$x], 3);
+		}
+
+		echo ("Inserting passive-url..\n");
+		flush();
+
+		$length = count($passive_url);
+		for($x = 0; $x < $length; $x++) 
+		{
+		    self::_insert ($db, $passive_url [$x], 4);
+		}
+	}
+
+	private static function _insert ($db, $email, $group)
+	{
+		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::EMAIL . ", " . self::GROUP . 
+				") VALUES ('" . $email . "', " . $group . ");");
 	}
 }
 

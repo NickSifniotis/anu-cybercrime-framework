@@ -1,0 +1,11 @@
+<?php
+
+if (!defined ("DatabaseHelper"))
+	die ("No!");
+
+$hunter_att = array ("u5583327@anu.edu.au", "u5796988@anu.edu.au", "u6043311@anu.edu.au", "u4844801@anu.edu.au", "u5185691@anu.edu.au", "u6044248@anu.edu.au", "u5355829@anu.edu.au", "u6096919@anu.edu.au", "u5637400@anu.edu.au", "u5584863@anu.edu.au", "u6048058@anu.edu.au", "u6033967@anu.edu.au", "u5184066@anu.edu.au", "u5797814@anu.edu.au", "u5564721@anu.edu.au", "u5797586@anu.edu.au");
+$hunter_url = array ("u6060711@anu.edu.au", "u5799174@anu.edu.au", "u5567348@anu.edu.au", "u6063844@anu.edu.au", "u5826351@anu.edu.au", "u6058349@anu.edu.au", "u6050684@anu.edu.au", "u5568252@anu.edu.au", "u6019208@anu.edu.au", "u6045823@anu.edu.au", "u5562448@anu.edu.au", "u5798677@anu.edu.au", "u5562309@anu.edu.au", "u5178722@anu.edu.au", "u5182910@anu.edu.au");
+$passive_att = array ();
+$passive_url = array ("u5796457@anu.edu.au", "u5589902@anu.edu.au", "u5643364@anu.edu.au", "u5354826@anu.edu.au", "u1008515@anu.edu.au", "u5925692@anu.edu.au", "u6048464@anu.edu.au", "u6051421@anu.edu.au", "u5569772@anu.edu.au", "u6048019@anu.edu.au", "u5643162@anu.edu.au", "u5570825@anu.edu.au", "u5183532@anu.edu.au", "u6051534@anu.edu.au", "u5542840@anu.edu.au");
+
+?>
