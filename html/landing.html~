@@ -8,7 +8,7 @@
 	<body>
 		<div class="container">
 			<div class="header clearfix">
-				<img src="logo.png" />
+				<img src="logo.png" height=50px />
 			</div>
 
 			<div class="content">
@@ -17,7 +17,7 @@
 				<p><h4 id="oops-block"></h4></p>
 
 				<div class="main clearfix">
-					<img src="oops.png" height=50% />	
+					<img src="oops.png" height=200px />	
 					<p id="page_content"></p>
 					<p id="page_content_2"></p>
 				</div>
