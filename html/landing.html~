@@ -1,9 +1,33 @@
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"> 
 		<title id="_header_page_title"></title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
 	</head>
 
 	<body>
-		<div id="_body_content"></div>
+		<div class="container">
+			<div class="header clearfix">
+				<img src="logo.png" />
+			</div>
+
+			<div class="content">
+				<p><h1 class="header-heading" id="page_heading" ></h1></p>
+
+				<p><h4 id="oops-block"></h4></p>
+
+				<div class="main clearfix">
+					<img src="oops.png" height=50% />	
+					<p id="page_content"></p>
+					<p id="page_content_2"></p>
+				</div>
+			</div>
+
+			<div class="footer">
+				<p id="footer"></p>
+			</div>
+		</div>
 	</body>
+
+	<script type="text/javascript" src="js/landing.js"></script>
 </html>

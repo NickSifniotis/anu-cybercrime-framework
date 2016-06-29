@@ -25,7 +25,7 @@ h4 { font-size: 1.125em; } /* 18px */
 h5 { font-size: 1em; } /* 16px */
 h6 { font-size: .875em; } /* 14px */
 
-p, div
+p
 {
 	margin: 0 0 1.5em;
 	line-height: 1.5;
@@ -45,6 +45,13 @@ hr
 	margin-bottom: 2em;
 	border: 0;
 	border-top: 1px solid #ddd;
+}
+
+img
+{
+	float: left;
+	margin: 10px;
+	height: 50%;
 }
 
 table
@@ -72,6 +79,11 @@ a:active { color: red; }
 /* -----------------------
 Layout styles
 ------------------------*/
+
+.clearfix 
+{
+  overflow: auto;
+}
 
 .container
 {
@@ -218,7 +230,7 @@ Single styles
 {
 	display: inline-block;
 	padding-right: 5px;
-	padding-left: 5px;
+	padding-left: 5px; <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"> 
 }
 
 /* -----------------------
