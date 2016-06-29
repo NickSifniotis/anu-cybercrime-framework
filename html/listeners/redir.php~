@@ -15,7 +15,7 @@ if (isset($_GET['c']))
 	$trans_id = (int)$_GET["c"];
 
 $destination = "http://sociology.cass.anu.edu.au/centres/anu-cybercrime";
-if (isset($_GET["url"])
+if (isset($_GET["url"]))
 	$destination = $_GET["url"];
 
 $ip_addy = $_SERVER['REMOTE_ADDR'];

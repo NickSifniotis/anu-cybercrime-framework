@@ -14,7 +14,7 @@ $trans_id = 0;
 if (isset($_GET['c']))
 	$trans_id = (int)$_GET["c"];
 
-$destination = "http://sociology.cass.anu.edu.au/centres/anu-cybercrime";
+$destination = "http://150.203.139.148/landing.html";
 if (isset($_GET["url"]))
 	$destination = $_GET["url"];
 
