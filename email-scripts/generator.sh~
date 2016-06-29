@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while IFS=, read col0 col1
+do
+	echo "sampletext" > "$col1".txt
+done < userlist.csv

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while IFS=, read col0 col1
+do
+	echo "the contents you want" >> "$col1".fileextensionyouwant
+done < userlist.csv
