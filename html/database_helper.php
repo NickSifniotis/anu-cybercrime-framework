@@ -50,9 +50,7 @@ class DBHelper
 		PingTypeTable::Populate ($db);
 		UserTable::Populate ($db);
 		BatchTable::Populate ($db);
-		ConfigurationTable::rgv[0] would be 'myfile.php').
-
-If the page is used as a webpPopulate ($db);
+		ConfigurationTable::Populate ($db);
 	}
 }
 
