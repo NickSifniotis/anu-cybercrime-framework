@@ -1,0 +1,2 @@
+(function(){define(["external/underscore"],function(t){var n,e,i,o,r,a,u;return i="tutorialInitiator",n="tutorialCreateAnnotation",e="tutorialCreateAnnotationSuccess",a="tutorialReply",u="tutorialReplySuccess",o="tutorialMention",r="tutorialMentionSuccess",{INITIATOR:i,CREATE_ANNOTATION:n,CREATE_ANNOTATION_SUCCESS:e,REPLY:a,REPLY_SUCCESS:u,MENTION:o,MENTION_SUCCESS:r}})}).call(this);
+//# sourceMappingURL=tutorial.min.js-vflJl0dUo.map

@@ -1,0 +1,24 @@
+(function(){
+/**/
+
+})();
+(function(){
+//used to sync advertiser without leaking referer to final destination
+	  var frm = document.createElement('iframe');
+	  frm.style.visibility = 'hidden';
+	  frm.style.display = 'none';
+	  frm.src = "https://pixel.mathtag.com/sync/iframe?mt_adid=151049&v1=&v2=&v3=&s1=&s2=&s3=&mt_uuid=b228566d-fad8-4900-9cc1-e75e440101a6&no_iframe=1";
+	  frm.setAttribute("id", "mm_sync_back_ground");
+	  var trys = 0;
+	  var interval = setInterval(function(){
+	      if (trys++ < 20 && interval && !document.getElementById("mm_sync_back_ground"))
+		  if (document.body) {
+		      if (interval) {
+			  clearInterval(interval);
+			  interval = 0;
+		       }
+		      document.body.appendChild(frm);
+		  }
+	  }, 100);
+
+})();

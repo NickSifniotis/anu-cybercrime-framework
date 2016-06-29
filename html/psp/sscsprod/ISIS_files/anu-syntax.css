@@ -1,0 +1,28 @@
+
+/* GeSHi (c) Nigel McNie 2004 (http://qbnz.com/highlighter) */
+
+.html5 .de1, .html5 .de2, .php .de1, .php .de2 {font-weight:normal;background:transparent;color:#111; padding-left: 5px;} /* default styles */
+
+div .html5, .php, .asp {font-size:1.0em; font-family:Consolas, Courier New, monospace; overflow:auto;};
+
+.html5 .kw1, .php .kw1 {color: #007EA3;} /* keyword 1 (if, do, while etc) */
+
+.html5 .kw2, .php .kw2 {color: #007EA3; } /* keyword 2 (null, true, false, etc) */
+
+.html5 .kw3, .php .kw3 {color: #666666;} /* keyword 3 (attribute name, eg class, href) */
+
+.html5 .kw4, .php .kw4 {color: #f63333;} /* keyword 4*/
+
+.html5 .co1, .html5 .co2, .html5 .coMULTI, .php .co1, .php .co2, .php .coMULTI {color: #666666;} /* multi-line comment */
+
+.html5 .es0, .php .es0 {color: #000033; font-weight: bold;} /* escape chars */
+
+.html5 .br0, .html5 .sc2, .php .br0, .php .sy1 {color: #007EA3;} /* brackets */
+
+.html5 .st0, .php .st0, .php .st_h {color: #976E00; font-weight:bold;} /* string (eg class names, URLs) */
+
+.html5 .nu0, .php .nu0 {color: #111111;} /* numbers */
+
+.html5 .me0, .php .me0 {color: #006600;} /* methods */
+
+.php .re0 {color: #0039A6;} /* variable names */

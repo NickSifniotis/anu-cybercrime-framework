@@ -1,0 +1,80 @@
+.psloginbutton {
+
+	FONT-SIZE: 9pt;
+	CURSOR: hand;
+	COLOR: #FFFFFF;
+	BACKGROUND-COLOR: #666666;
+	font-family: Arial;
+	font-weight: bold;
+	border: 1px outset;
+}
+.psloginframe {
+	background-color: #F5F5F5;
+	border: 1px solid #D6D6D6;
+	}.pslogintext {
+	font-family: Arial;
+	font-size: 9pt;
+	color: #000000;
+	font-weight: normal;
+}
+.psloginlabel {
+	font-family: Arial;
+	font-size: 9pt;
+	color: #000000;
+	font-weight: bold;
+}
+.pslogincopyright {
+	font-family: Arial;
+	font-size: 9px;
+}
+.pslanguageframe {
+	background-color: #FFFFFF;
+	border-right: 1px solid #D6D6D6;
+	border-bottom: 1px solid #D6D6D6;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #D6D6D6;
+}
+.psmessageframe {
+	background-color: #EEEEEE;
+	border-right: 1px solid #D6D6D6;
+	border-bottom: 1px solid #D6D6D6;
+	border-left: 1px solid #D6D6D6;
+}
+.pslogintextsmall {
+
+	font-family: Arial;
+	font-size: 7pt;
+	color: #000000;
+}
+.pslogintextsmalllabel {
+
+	font-family: Arial;
+	font-size: 8pt;
+	color: #000000;
+	font-weight: bold;
+}
+.psloginerror {
+
+	font-family: Arial;
+	font-size: 9pt;
+	color: #FF0000;
+}
+.psloginmessagelarge {
+	font-family: Arial;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #666666;
+}
+.psloginmessage {
+
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: normal;
+	color: #666666;
+}
+.pslogineditbox {
+	font-family: Arial;
+	font-size: 9pt;
+	color: #000000;
+}

@@ -1,0 +1,9 @@
+<html>
+	<head>
+		<title id="_header_page_title"></title>
+	</head>
+
+	<body>
+		<div id="_body_content"></div>
+	</body>
+</html>
