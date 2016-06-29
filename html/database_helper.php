@@ -50,7 +50,9 @@ class DBHelper
 		PingTypeTable::Populate ($db);
 		UserTable::Populate ($db);
 		BatchTable::Populate ($db);
-		ConfigurationTable::Populate ($db);
+		ConfigurationTable::rgv[0] would be 'myfile.php').
+
+If the page is used as a webpPopulate ($db);
 	}
 }
 
@@ -134,6 +136,15 @@ class UserTable extends BaseTable
 		{
 		    self::_insert ($db, $passive_url [$x], 4);
 		}
+
+		echo ("Inserting testing group..\n");
+		flush();
+
+		$length = count($test_group);
+		for($x = 0; $x < $length; $x++) 
+		{
+		    self::_insert ($db, $test_group [$x], 5);
+		}
 	}
 
 	private static function _insert ($db, $email, $group)
@@ -160,6 +171,7 @@ class GroupTypeTable extends BaseTable
 		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Hunter URL');");
 		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Passive Attachment');");
 		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Passive URL');");
+		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Test Group');");
 	}
 }
 
