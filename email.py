@@ -55,15 +55,29 @@ def send_email_body (template):
 
 	# start with the Subject and From data
 	send ("Subject: " + template['subject'])
-	send ("From: " + template['from_name'] + " <" + template['from'] + ">")
+	send ("From: " + template['from_appearance'])
+	#send ("To: " + template['to_appearance'])
+	send ("Sender: " + template['sender'])
 
 	# MIME header
+	send ("Content-Type: multipart/alternative;")
+	send ("	boundary=\"_000_PS1PR06MB1722D09F71B3E2ACF7A801CDAB2D0PS1PR06MB1722apcp_\"")
 	send ("MIME-Version: 1.0")
-	send ("Content-type: text/plain")
 
-	# message body
-	send (template['text_component'])
+	# message body - text version first
+	send ("--_000_PS1PR06MB1722D09F71B3E2ACF7A801CDAB2D0PS1PR06MB1722apcp_")
+	send ("Content-Type: text/plain; charset=\"iso-8859-1\"")
+	send ("Content-Transfer-Encoding: quoted-printable\n")
+	send (template['text_component'] + "\n")
 
+	# then the HTML equivalent
+	send ("--_000_PS1PR06MB1722D09F71B3E2ACF7A801CDAB2D0PS1PR06MB1722apcp_")
+	send ("Content-Type: text/html; charset=\"iso-8859-1\"")
+	send ("Content-Transfer-Encoding: quoted-printable\n")
+	send (template['html_component'] + "\n")
+
+	# end it
+	send ("--_000_PS1PR06MB1722D09F71B3E2ACF7A801CDAB2D0PS1PR06MB1722apcp_--")
 	return
 
 
