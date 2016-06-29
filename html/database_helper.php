@@ -23,6 +23,7 @@ class DBHelper
 
 	private function create_databases($db)
 	{
+		$db -> execute (GroupTypeTable::CREATE_QUERY);
 		$db -> execute (PingRecordTable::CREATE_QUERY);
 		$db -> execute (UserTable::CREATE_QUERY);
 		$db -> execute (PingTypeTable::CREATE_QUERY);
@@ -33,6 +34,7 @@ class DBHelper
 
 	private function delete_databases($db)
 	{
+		$db -> execute (GroupTypeTable::DELETE_QUERY);
 		$db -> execute (PingRecordTable::DELETE_QUERY);
 		$db -> execute (UserTable::DELETE_QUERY);
 		$db -> execute (PingTypeTable::DELETE_QUERY);
@@ -43,6 +45,7 @@ class DBHelper
 
 	private function populate_databases($db)
 	{
+		GroupTypeTable::Populate ($db);
 		PingRecordTable::Populate ($db);
 		PingTypeTable::Populate ($db);
 		UserTable::Populate ($db);
@@ -83,17 +86,39 @@ class UserTable extends BaseTable
 {
 	const TABLE_NAME = "user_table";
 	const UID = "uni_id";
-	const CODENAME = "codename";
+	const EMAIL = "email";
+	const GROUP = "group";
 
 	const DELETE_QUERY = "DROP TABLE IF EXISTS " . self::TABLE_NAME;
 	const CREATE_QUERY = "CREATE TABLE " . self::TABLE_NAME . "(" .
 					self::_ID . " INT NOT NULL AUTO_INCREMENT, " .
 					self::UID . " VARCHAR (10), " .
-					self::CODENAME . " VARCHAR (30), " .
+					self::EMAIL . " VARCHAR (50), " .
+					self::GROUP . " INT, " .
 					"PRIMARY KEY (" . self::_ID . "));";
 
 	public static function Populate ($db)
 	{
+	}
+}
+
+class GroupTypeTable extends BaseTable
+{
+	const TABLE_NAME = "group_type_table";
+	const DESCRIPTION = "description";
+
+	const DELETE_QUERY = "DROP TABLE IF EXISTS " . self::TABLE_NAME;
+	const CREATE_QUERY = "CREATE TABLE " . self::TABLE_NAME . "(" .
+				self::_ID . " INT NOT NULL AUTO_INCREMENT, " .
+				self::DESCRIPTION . " VARCHAR (30), ".
+				"PRIMARY KEY (" . self::_ID . "));";
+
+	public static function Populate($db)
+	{
+		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Hunter Attachment');");
+		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Hunter URL');");
+		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Passive Attachment');");
+		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Passive URL');");
 	}
 }
 

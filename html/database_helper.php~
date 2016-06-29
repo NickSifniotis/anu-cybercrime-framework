@@ -14,7 +14,7 @@ class DBHelper
 	}
 
 
-	public function Upgrade()
+	public function Upgrade($db)
 	{
 		$this -> delete_databases ($db);
 		$this -> create_databases ($db);
@@ -83,17 +83,39 @@ class UserTable extends BaseTable
 {
 	const TABLE_NAME = "user_table";
 	const UID = "uni_id";
-	const CODENAME = "codename";
+	const EMAIL = "email";
+	const GROUP = "group";
 
 	const DELETE_QUERY = "DROP TABLE IF EXISTS " . self::TABLE_NAME;
 	const CREATE_QUERY = "CREATE TABLE " . self::TABLE_NAME . "(" .
 					self::_ID . " INT NOT NULL AUTO_INCREMENT, " .
 					self::UID . " VARCHAR (10), " .
-					self::CODENAME . " VARCHAR (30), " .
+					self::EMAIL . " VARCHAR (50), " .
+					self::GROUP . " INT, " .
 					"PRIMARY KEY (" . self::_ID . "));";
 
 	public static function Populate ($db)
 	{
+	}
+}
+
+class GroupTypeTable extends BaseTable
+{
+	const TABLE_NAME = "group_type_table";
+	const DESCRIPTION = "description";
+
+	const DELETE_QUERY = "DROP TABLE IF EXISTS " . self::TABLE_NAME;
+	const CREATE_QUERY = "CREATE TABLE " . self::TABLE_NAME . "(" .
+				self::_ID . " INT NOT NULL AUTO_INCREMENT, " .
+				self::DESCRIPTION . " VARCHAR (30), ".
+				"PRIMARY KEY (" . self::_ID . "));";
+
+	public static function Populate($db)
+	{
+		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Hunter Attachment');");
+		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Hunter URL');");
+		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Passive Attachment');");
+		$db -> execute ("INSERT INTO " . self::TABLE_NAME . " (" . self::DESCRIPTION . ") VALUES ('Passive URL');");
 	}
 }
 
