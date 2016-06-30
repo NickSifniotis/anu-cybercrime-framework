@@ -42,6 +42,7 @@ def send (data):
 	if (data != ""):
 		data = data + "\n"
 		connection.send (data)
+
 	return
 
 
@@ -56,12 +57,12 @@ def send_email_body (template):
 	# start with the Subject and From data
 	send ("Subject: " + template['subject'])
 	send ("From: " + template['from_appearance'])
-	#send ("To: " + template['to_appearance'])
 	send ("Sender: " + template['sender'])
+	send ("To: <" + template['to'] + ">")
 
 	# MIME header
 	send ("Content-Type: multipart/alternative;")
-	send ("	boundary=\"_000_PS1PR06MB1722D09F71B3E2ACF7A801CDAB2D0PS1PR06MB1722apcp_\"")
+	send ("\tboundary=\"_000_PS1PR06MB1722D09F71B3E2ACF7A801CDAB2D0PS1PR06MB1722apcp_\"")
 	send ("MIME-Version: 1.0")
 
 	# message body - text version first
@@ -82,13 +83,25 @@ def send_email_body (template):
 
 
 
+# extract the command line args, that control which email is going out, which user to send to etc
+batch_number = sys.argv[1]
+user_id = sys.argv[2]
+user_email = sys.argv[3]
+template = sys.argv[4]
 
+exec(open(template).read())
+email_template['to'] = user_email
+
+
+# substitute in the variables into the HTML component
+email_template['html_component'] = email_template['html_component'].replace("<USER_ID>", str(user_id))
+email_template['html_component'] = email_template['html_component'].replace("<BATCH_ID>", str(batch_number))
+
+
+# set up the connection
 TCP_IP = '130.56.66.51'
 TCP_PORT = 25
 BUFFER_SIZE = 1024
-
-
-exec(open("test_email_template.py").read())
 
 
 connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
