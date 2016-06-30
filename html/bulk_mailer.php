@@ -29,10 +29,15 @@ function list_groups_and_die()
 	$_db = $_database_helper -> get_database ("db-config.php");
 
 	$query = "SELECT * FROM " . GroupTypeTable::TABLE_NAME;
+	$result_set = $_db -> execute_query ($query);
 
 	echo ("Id\tName\n");
+	while ($row = $_db -> next ($result_set))
+		echo ($row[GroupTypeTable::_ID] . "\t" . $row[GroupTypeTable::DESCRIPTION] . "\n");
 
 	$_db -> disconnect();
+
+	exit (0);
 }
 
 
@@ -76,6 +81,8 @@ $template_file = $template_pieces[1];
 if (!file_exists ($template_file))
 	die ("Error: $template_file not found.\n");
 
+if (!file_exists ("email.py"))
+	die ("Error: Email script not found. You'll need to contact Nick or Grisha to fix this.\n");
 
 
 // open a database connection
@@ -83,9 +90,6 @@ $_database_helper = new DBHelper();
 $_db = $_database_helper -> get_database ("db-config.php");
 
 // select the relevant users, and loop through them
-
-
-// load the email template, and substitute in the variable names
 
 
 // send the email

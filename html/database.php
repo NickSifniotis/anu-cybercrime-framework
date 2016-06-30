@@ -63,6 +63,24 @@ class DB
 		if (!mysql_query ($query, $this -> connection))
 			die ("Error: " . $query . "<br>" . $this -> connection -> error);
 	}
+
+
+	/**
+		Executes a select query ..
+	**/
+	public function execute_query ($query)
+	{
+		return mysql_query ($query, $this -> connection);
+	}
+
+
+	/**
+		.. and returns the next row in the result query set
+	**/
+	public function next ($result_set)
+	{
+		return mysql_fetch_assoc($result_set);
+	}
 }
 
 ?>
