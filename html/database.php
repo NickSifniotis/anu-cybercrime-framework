@@ -81,6 +81,15 @@ class DB
 	{
 		return mysql_fetch_assoc($result_set);
 	}
+
+
+	/**
+		Frees the cursor resource
+	**/
+	public function close_query ($result_set)
+	{
+		mysql_free_result($result_set);
+	}
 }
 
 ?>
