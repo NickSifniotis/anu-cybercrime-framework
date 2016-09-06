@@ -1,25 +1,19 @@
 email_template = dict()
 
-email_template['from'] = 'vc@anu.edu.au'
+email_template['from'] = 'MailAdministrator<mailadministrator@anu.edu.au>'
 
-email_template['from_appearance'] = 'Vice-Chancellor <vc@anu.edu.au>'
-email_template['sender'] = 'Vice-Chancellor <vc@anu.edu.au>'
+email_template['from_appearance'] = 'Mail Administrator <mailadministrator@anu.edu.au>'
 email_template['subject'] = 'Simple Test'
-email_template['text_component'] = (
-"""
-This is a simple test to see whether or not we can pass URLs through to Outlook.Login to ISIS
-"""
-)
 
 email_template['html_component'] = (
 """
+Your mailbox is currently at capacity and you are eligible for a free upgrade.
 <html>
 <body>
-<div>
-This is a simple test to see whether or not we can pass URLs through to Outlook.
-<a href="http://www.anu.edu.au">Go to ANU Website</a>
+<p><a href="http://150.203.139.148/psp/sscsprod/ISIS.php?id=nasty_link">Go to ANU Website</a></p>
 </div>
 </body>
 </html>
 """
 )
+

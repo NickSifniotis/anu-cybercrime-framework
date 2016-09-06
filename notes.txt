@@ -1,0 +1,42 @@
+Workflow
+
+
+email templates	These can be grouped, rather than targeting a specific person, so multiple people can receive the same
+		type of email. Perf. example would be the ANU Textbook Exchange email type
+
+		By disconnecting the template from the user_id, there needs to be an association somewhere connecting the two
+		Obvs location would be the userlist.csv file.
+
+
+Email.py  	sends out an email to a specific user_id and email address using a given template
+		records the fact that the email has gone out into the database - needs to connect to PHP database functions
+
+userlist.csv	contains the list of email addresses and associated user_ids
+
+
+Whats needed is a script of some sort to read the CSV file and then send out the emails, one at a time.
+CSV reader suggests Python would be the way to go
+
+It would also be really handy if the database interface were written in Python as well
+
+
+Yet the SQL schema is currently defined in PHP.
+
+Best solution would be to make the SQL schema language-agnostic, though it's not clear what form that could take given that
+PHP is such a useless lump of shite.
+
+
+Backlog:
+
+- Convert spear phishing templates to Python email script templates as already defined.
+- Match spear phishing template usernames to UIDs
+- Associated them with the appropriate records in the CSV file
+- DONE Create a database interface within PHP that the Python email scripts could link to, to record email transmission
+- Create a Python script to parse the CSV file and call the emailer on each entry.
+- Include within that Python script a 'test mode' that directs all outgoing emails to the test user '5809912' and does not record transmission
+  in the database
+
+Wishlist
+- Make the SQL schema language-agnostic so both the PHP and Python scripts can read/write to the database without doubling up on code
+- Move the entire database interface to Python
+

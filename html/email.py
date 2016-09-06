@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 import socket
 import sys
 
@@ -55,32 +56,25 @@ def send_email_body (template):
 	global connection
 
 	# start with the Subject and From data
-	send ("Subject: " + template['subject'])
 	send ("From: " + template['from_appearance'])
-	send ("Sender: " + template['sender'])
-	send ("To: <" + template['to'] + ">")
+	send ("To: " + template['to'])
+	send ("Subject: " + template['subject'])
 
 	# MIME header
-	send ("Content-Type: multipart/alternative;")
-	send ("\tboundary=\"_000_PS1PR06MB1722D09F71B3E2ACF7A801CDAB2D0PS1PR06MB1722apcp_\"")
-	send ("MIME-Version: 1.0")
+	send ("Mime-Version: 1.0;")
+	send ("Content-Type: text/html; charset=\"ISO-8859-1\";")
+	send ("Content-Transfer-Encoding: 7bit;")
 
 	# message body - text version first
-	send ("--_000_PS1PR06MB1722D09F71B3E2ACF7A801CDAB2D0PS1PR06MB1722apcp_")
-	send ("Content-Type: text/plain; charset=\"iso-8859-1\"")
-	send ("Content-Transfer-Encoding: quoted-printable\n")
-	send (template['text_component'] + "\n")
-
-	# then the HTML equivalent
-	send ("--_000_PS1PR06MB1722D09F71B3E2ACF7A801CDAB2D0PS1PR06MB1722apcp_")
-	send ("Content-Type: text/html; charset=\"iso-8859-1\"")
-	send ("Content-Transfer-Encoding: quoted-printable\n")
 	send (template['html_component'] + "\n")
 
-	# end it
-	send ("--_000_PS1PR06MB1722D09F71B3E2ACF7A801CDAB2D0PS1PR06MB1722apcp_--")
 	return
 
+
+# error if the user hasn't provided enough command line arguments
+if len(sys.argv) != 5:
+	print ("Error! Correct usage is email.py <batch_number> <user_id> <user_email> <template>")
+	sys.exit(1);
 
 
 # extract the command line args, that control which email is going out, which user to send to etc
@@ -95,7 +89,7 @@ email_template['to'] = user_email
 
 # substitute in the variables into the HTML component
 email_template['html_component'] = email_template['html_component'].replace("<USER_ID>", str(user_id))
-email_template['html_component'] = email_template['html_component'].replace("<BATCH_ID>", str(batch_number))
+email_template['html_comhttps://www.google.com.au/search?client=ubuntu&channel=fs&q=php+convert+string+to+int&ie=utf-8&oe=utf-8&gfe_rd=cr&ei=8CPOV7-XOqvM8geUioL4BQponent'] = email_template['html_component'].replace("<BATCH_ID>", str(batch_number))
 
 
 # set up the connection
@@ -109,8 +103,8 @@ connection.connect((TCP_IP, TCP_PORT))
 
 send_and_receive ("", 220)
 send_and_receive ("HELO anu.edu.au", 250)
-send_and_receive ("MAIL FROM: <" + email_template['from'] + ">", 250)
-send_and_receive ("RCPT TO: <" + email_template['to'] + ">", 250)
+send_and_receive ("MAIL FROM:" + email_template['from'], 250)
+send_and_receive ("RCPT TO:" + email_template['to'], 250)
 send_and_receive ("DATA", 354)
 
 send_email_body (email_template)
@@ -120,4 +114,6 @@ send_and_receive ("QUIT", 221)
 
 connection.close()
 
+# log the successful transmission of the email into the system database.
+os.system ("php log_email_sent.php " + user_id);
 
